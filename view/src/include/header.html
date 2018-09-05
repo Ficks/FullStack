@@ -1,0 +1,58 @@
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="./public/images/logo.png" alt="">
+        </div>
+        <ul>
+            <li>
+                <a href="index.html">首页</a>
+            </li>
+            <li>
+                <a href="./platform.html">平台介绍</a>
+            </li>
+            <li>
+                <a href="./engineeringCase.html">工程案例</a>
+            </li>
+            <li>
+                <a href="./polularScience.html">加建科普</a>
+            </li>
+            <li>
+                <a href="./consultation.html">加装咨询</a>
+            </li>
+            <li>
+                <a href="./constructionCenter.html">加建中心</a>
+            </li>
+            <li>
+                <a href="./contactUs.html">联系我们</a>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="right">
+        <div class="search_box">
+            <input type="text">
+            <i class="iconfont icon-search"></i>
+        </div>
+        <a href="">登录</a>
+        <a href="">注册</a>
+        <a href="">设置</a>
+    </div> -->
+</div>
+<script>
+    var url = location.href;
+    console.log(url)
+    if (url.indexOf("platform.html") != -1) {
+        $(".header ul li").eq(1).addClass("active");
+    } else if (url.indexOf("engineeringCase.html") != -1 || url.indexOf("engDetails.html") != -1) {
+        $(".header ul li").eq(2).addClass("active");
+    } else if (url.indexOf("polularScience.html") != -1 || url.indexOf("polularDetails.html") != -1) {
+        $(".header ul li").eq(3).addClass("active");
+    } else if (url.indexOf("consultation.html") != -1) {
+        $(".header ul li").eq(4).addClass("active");
+    } else if (url.indexOf("constructionCenter.html") != -1) {
+        $(".header ul li").eq(5).addClass("active");
+    } else if (url.indexOf("contactUs.html") != -1) {
+        $(".header ul li").eq(6).addClass("active");
+    } else {
+        $(".header ul li").eq(0).addClass("active");
+    }
+</script>

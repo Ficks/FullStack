@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加装咨询</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_810759_9zqju97jbdq.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <script src="./public/scripts/jquery.min.js"></script>
+</head>
+
+<body>
+    @@include('./include/header.html')
+    <div class="banner">
+        <img src="./public/images/banner.jpg" alt="">
+    </div>
+    <div class="container">
+        <div class="slibar">
+            <ul>
+                <li class="active">六大常见难题</li>
+                <li>价格咨询</li>
+                <li>手续咨询</li>
+                <li>技术咨询</li>
+                <li>方案咨询</li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="difficulty">
+                <div class="index_tl">
+                    <h2>6大常见难题</h2>
+                    <h3>6 common problems</h3>
+                </div>
+                <div class="main">
+                    <div class="styles left">
+                        <div class="list">
+                            <h3>住户意见不统一</h3>
+                            <span>01</span>
+                        </div>
+                        <div class="list">
+                            <h3>收费分摊无标准</h3>
+                            <span>02</span>
+                        </div>
+                        <div class="list">
+                            <h3>加建资金无来源</h3>
+                            <span>03</span>
+                        </div>
+                    </div>
+                    <div class="img">
+                        <img src="./public/images/nt.jpg" alt="">
+                    </div>
+                    <div class="styles right">
+                        <div class="list">
+                            <span>04</span>
+                            <h3>安规审批通不过</h3>
+                        </div>
+                        <div class="list">
+                            <span>05</span>
+                            <h3>无人牵头实施难</h3>
+                        </div>
+                        <div class="list">
+                            <span>06</span>
+                            <h3>加装手续很繁琐</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="childs">
+
+            </div>
+            <div class="pagebox"></div>
+        </div>
+    </div>
+    @@include('./include/footer.html')
+    <script src="./public/scripts/jquery.pagination.js"></script>
+    <script src="./public/scripts/scripts.js"></script>
+    <script>
+        $main.consultation();
+        $main.consultationList();
+    </script>
+</body>
+
+</html>

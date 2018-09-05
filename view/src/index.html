@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>云天</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_810759_9zqju97jbdq.css">
+    <link rel="stylesheet" href="./public/css/swiper.min.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <script src="./public/scripts/jquery.min.js"></script>
+</head>
+
+<body>
+    @@include('./include/header.html')
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper bannerbox">
+
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="container">
+        <div class="PlatformIntroduction">
+            <div class="index_tl">
+                <h2>平台介绍</h2>
+                <h3>Platform is introduced</h3>
+            </div>
+            <div class="box ptjsdata">
+
+            </div>
+        </div>
+        <div class="CaseStudy">
+            <div class="index_tl">
+                <h2>案例展示</h2>
+                <h3>The case shows</h3>
+            </div>
+            <div class="box">
+
+            </div>
+        </div>
+        <div class="news">
+            <div class="index_tl">
+                <h2>新闻动态</h2>
+                <h3>The news</h3>
+            </div>
+            <!-- Swiper -->
+            <div class="swiper-container-news">
+                <div class="swiper-wrapper newsbox">
+
+                </div>
+            </div>
+        </div>
+        <div class="videos">
+            <div class="index_tl">
+                <h2>视频展示</h2>
+                <h3>Video display</h3>
+            </div>
+            <div class="box">
+
+            </div>
+        </div>
+    </div>
+
+    @@include('./include/footer.html')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+    <script src="./public/scripts/scripts.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+
+        $main.indexBanner();
+        $main.indexPtjs();
+        $main.indexAnlizs();
+        $main.indexNews();
+        $main.indexVideo();
+    </script>
+</body>
+
+</html>

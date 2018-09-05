@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工程案例</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_810759_9zqju97jbdq.css">
+    <link rel="stylesheet" href="./public/css/jigsaw.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <script src="./public/scripts/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    @@include('./include/header.html')
+    <div class="banner">
+        <img src="./public/images/banner.jpg" alt="">
+    </div>
+    <div class="container">
+        <div class="cots">
+            <div class="list">
+                <h3>所在位置：</h3>
+                <div class="m">
+                    <select name="" id="shen">
+                        <option value=""></option>
+                    </select>
+                    <span>省</span>
+                </div>
+                <div class="m">
+                    <select name="" id="shi">
+                        <option value=""></option>
+                    </select>
+                    <span>市</span>
+                </div>
+                <div class="m">
+                    <select name="" id="qu">
+                        <option value=""></option>
+                    </select>
+                    <span>区</span>
+                </div>
+            </div>
+            <div class="list">
+                <h3>详细地址：</h3>
+                <div class="m">
+                    <input type="text" id="address">
+                </div>
+            </div>
+            <div class="list">
+                <h3>姓名：</h3>
+                <div class="m">
+                    <input type="text" id="name">
+                </div>
+            </div>
+            <div class="list">
+                <h3>电话：</h3>
+                <div class="m">
+                    <input type="text" id="tel">
+                </div>
+            </div>
+            <div class="list">
+                <h3>性别：</h3>
+                <div class="m mo">
+                    <span>
+                        <input type="radio" class="ds" name="sex" id="ns" value="男">
+                        <label for="ns">男</label>
+                    </span>
+                    <span>
+                        <input type="radio" class="ds" name="sex" id="nv" value="女">
+                        <label for="nv">女</label>
+                    </span>
+                </div>
+            </div>
+            <div class="list">
+                <h3>备注</h3>
+                <div class="m">
+                    <textarea name="" id="remarks" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div id="captcha"></div>
+            <div id="msg"></div>
+            <div class="btn_bom">
+                <div class="submit">提&nbsp;&nbsp;&nbsp;交</div>
+                <div class="recet">重&nbsp;&nbsp;&nbsp;置</div>
+            </div>
+        </div>
+    </div>
+    <div class="ifx"></div>
+    <div class="ifxbox">
+        <div class="main">
+            <h2>提示</h2>
+            <div class="box">
+
+            </div>
+            <div class="btn">确定</div>
+        </div>
+    </div>
+    @@include('./include/footer.html')
+
+    <script src="./public/scripts/jigsaw.js"></script>
+    <script src="./public/scripts/scripts.js"></script>
+    <script>
+        jigsaw.init(document.getElementById('captcha'), function () {
+            $main.isYz = true;
+        })
+
+        $main.constructionCenter();
+    </script>
+</body>
+<script>
+</script>
+
+</html>
