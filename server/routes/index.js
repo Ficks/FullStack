@@ -5,11 +5,11 @@ var router = express.Router();
 var mongodb = require("mongodb");
 var mongoose = require("mongoose");
 // 数据库连接
-mongoose.connect("mongodb://localhost/yt", (err) => {
+mongoose.connect("mongodb://127.0.0.1:27017/yt", (err) => {
   if (err) {
-    console.log("连接失败");
+    console.log("0000000000000");
   } else {
-    console.log("连接成功");
+    console.log("1111111111111");
   }
 })
 

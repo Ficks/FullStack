@@ -34,6 +34,11 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+// 页面加载结束
+router.afterEach(() => {
+  NProgress.done();//进度条结束
+})
+
 Vue.use(ElementUI);
 
 Vue.prototype.$http = Axios;

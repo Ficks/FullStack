@@ -86,7 +86,7 @@ export default {
         if (valid) {
           sessionStorage.setItem("isLogin", true);
           this.$router.push({
-            path: "/index"
+            path: "/"
           });
         } else {
           console.log("error submit!!");
@@ -108,7 +108,8 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  background: url("./bg.jpg") no-repeat;
+  background-repeat: no-repeat;
+  background-image: url(./bg.jpg);
 
   .el-form-item__content {
     margin-left: 0 !important;
