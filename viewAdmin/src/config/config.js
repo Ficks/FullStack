@@ -1,3 +1,4 @@
 module.exports = {
-    server: 'http://39.108.181.216:8080'
+    server: 'http://39.108.181.216',
+    // server: 'http://127.0.0.1',
 }

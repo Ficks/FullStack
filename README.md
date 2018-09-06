@@ -14,3 +14,7 @@
 ### 内容管理系统 vue ElementUi axios swiper
 
 #### 前端使用了自动化工程  gulp
+
+
+
+# 在服务端部署的时候使用PM2在后台运行node

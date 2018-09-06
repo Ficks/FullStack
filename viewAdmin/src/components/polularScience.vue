@@ -188,12 +188,10 @@ export default {
   },
   methods: {
     handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
       this.pageData.size = val;
       this.getList();
     },
     handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
       this.pageData.current = val;
       this.getList();
     },
@@ -221,7 +219,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -257,7 +254,13 @@ export default {
         //   初始化编辑器
         $("#summernote").summernote({
           lang: "zh-CN", // default: 'en-US'
-          height: 400
+          height: 400,
+          //调用图片上传
+          callbacks: {
+            onImageUpload: files => {
+              this.sendFile(files[0]);
+            }
+          }
         });
         //   设置编辑器内容
         this.$refs.engineeringRuleForm.resetFields();
@@ -271,6 +274,24 @@ export default {
         this.engineering.ruleForm.author = row.author;
         this.engineering.ruleForm.synopsis = row.synopsis;
         this.engineering.ruleForm.text = row.text;
+      });
+    },
+    sendFile(file) {
+      var formData = new FormData();
+      formData.append("filename", file);
+      $.ajax({
+        url: this.$server + "upload/article", //路径是你控制器中上传图片的方法，下面controller里面我会写到
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: "POST",
+        success: data => {
+          $("#summernote").summernote(
+            "editor.insertImage",
+            this.$server + data.data.file.path
+          );
+        }
       });
     },
     engineeringSubmitForm(formName) {
@@ -289,8 +310,6 @@ export default {
             d.id = this.engineering.id;
           }
 
-          console.log(d);
-
           this.$http({
             url: url,
             tips: true,
@@ -306,7 +325,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -318,7 +336,6 @@ export default {
         data: { type: 1 }
       }).then(
         res => {
-          console.log(res);
           if (res.data.length != 0) this.bannerUrl = res.data[0].url;
           this.bannerLoading = false;
         },
@@ -334,7 +351,6 @@ export default {
         data: { type: 2, page: this.pageData }
       }).then(
         res => {
-          console.log(res);
           this.pageData.total = res.total;
           this.engineeringData = res.data;
           this.listLoading = false;

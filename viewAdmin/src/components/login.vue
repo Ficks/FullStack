@@ -15,13 +15,13 @@
                     <div class="list">
                       <el-form-item  prop="zh">
                         <i class="el-icon-mobile-phone" :style="{width:z?10+'%':15+'%'}"></i>
-                        <el-input :style="{width:z?90+'%':85+'%'}" @focus="z=true" @blur="z=false" placeholder="请输入账号" v-model="ruleForm.zh"></el-input>
+                        <el-input :style="{width:z?90+'%':85+'%'}" @focus="z=true" @keyup.enter.native="submitLogin('ruleForm')" @blur="z=false" placeholder="请输入账号" v-model="ruleForm.zh"></el-input>
                       </el-form-item>
                     </div>
                     <div class="list">
                       <el-form-item  prop="password">
                         <i class="el-icon-view" :style="{width:b?10+'%':15+'%'}"></i>
-                        <el-input type="password"  :style="{width:b?90+'%':85+'%'}" placeholder="请输入密码" @focus="b=true" @blur="b=false" v-model="ruleForm.password"></el-input>
+                        <el-input type="password"  @keyup.enter.native="submitLogin('ruleForm')" :style="{width:b?90+'%':85+'%'}" placeholder="请输入密码" @focus="b=true" @blur="b=false" v-model="ruleForm.password"></el-input>
                       </el-form-item>
                     </div>
                     <el-button class="submit" @click="submitLogin('ruleForm')" type="primary">登&nbsp;&nbsp;&nbsp;录</el-button>
@@ -89,7 +89,6 @@ export default {
             path: "/"
           });
         } else {
-          console.log("error submit!!");
           return false;
         }
       });

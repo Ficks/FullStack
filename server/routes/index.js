@@ -7,9 +7,9 @@ var mongoose = require("mongoose");
 // 数据库连接
 mongoose.connect("mongodb://127.0.0.1:27017/yt", (err) => {
   if (err) {
-    console.log("0000000000000");
+    console.log("连接失败");
   } else {
-    console.log("1111111111111");
+    console.log("连接成功");
   }
 })
 
@@ -23,9 +23,13 @@ var schema = new mongoose.Schema({
 })
 var MyModel = mongoose.model('index', schema);
 
+
+
 router.get("/", (req, res, next) => {
   res.send({ code: 200 })
 })
+
+
 // 首页信息访问
 router.post("/index/bannerOrpt", (req, res, next) => {
   MyModel.find({ type: req.body.type }, (err, doc) => {

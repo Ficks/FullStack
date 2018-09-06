@@ -67,6 +67,10 @@ uploadFile('constructionCenter/banner');
 // 关于我们
 uploadFile('contactUs/banner');
 
+// 所有文章图片存储
+uploadFile('article');
+
+
 
 
 module.exports = router;

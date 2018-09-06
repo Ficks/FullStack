@@ -210,7 +210,6 @@ export default {
             title: this.appDialog.ruleForm.title,
             imageUrl: this.appDialog.ruleForm.imageUrl
           };
-          console.log(d);
           this.$http({
             url: url,
             tips: true,
@@ -226,7 +225,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -241,7 +239,6 @@ export default {
             data: { imageUrl: this.bannerDialog.ruleForm.imageUrl }
           }).then(
             res => {
-              console.log(res);
               this.getList(1);
               this.bannerDialog.loading = false;
               this.bannerDialog.show = false;
@@ -252,7 +249,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });

@@ -199,7 +199,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -276,7 +275,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -288,7 +286,6 @@ export default {
         data: { type: 1 }
       }).then(
         res => {
-          console.log(res);
           if (res.data.length != 0) this.bannerUrl = res.data[0].url;
           this.bannerLoading = false;
         },
@@ -304,7 +301,6 @@ export default {
         data: { type: this.isType, page: this.pageData }
       }).then(
         res => {
-          console.log(res);
           this.pageData.total = res.total;
           this.engineeringData = res.data;
           this.listLoading = false;

@@ -42,6 +42,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static('./public'));//将文件设置成静态
+app.use('/', express.static('./view'));//将文件设置成静态
+app.use('/viewadmin', express.static('./viewadmin'));//将文件设置成静态
 
 app.use('/', indexRouter);
 app.use('/upload', uploadRouter);

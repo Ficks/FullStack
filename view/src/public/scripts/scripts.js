@@ -1,5 +1,5 @@
 var $main = {
-    server: "http://127.0.0.1:3030",
+    server: "http://39.108.181.216",
     isPage: true,
     childIndex: 2,
     city: null,

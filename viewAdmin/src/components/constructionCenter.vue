@@ -145,12 +145,10 @@ export default {
   },
   methods: {
     handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
       this.pageData.size = val;
       this.getList(2);
     },
     handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
       this.pageData.current = val;
       this.getList(2);
     },
@@ -164,7 +162,6 @@ export default {
             data: { imageUrl: this.bannerDialog.ruleForm.imageUrl }
           }).then(
             res => {
-              console.log(res);
               this.getList(1);
               this.bannerDialog.loading = false;
               this.bannerDialog.show = false;
@@ -175,7 +172,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -216,7 +212,6 @@ export default {
           if (type == 1) {
             if (res.data.length != 0) this.bannerUrl = res.data[0].url;
           } else if (type == 2) {
-            console.log(res.data);
             this.listArr = res.data;
             this.pageData.total = res.total;
           }

@@ -284,7 +284,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -317,7 +316,6 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -342,12 +340,12 @@ export default {
             }
           );
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
     },
     handleBannerSuccess(res, file) {
+      console.log(9999)
       this.appDialog.ruleForm.imageUrl = res.data.file.path;
     },
     handlePlatformSuccess(res, file) {
@@ -419,15 +417,16 @@ export default {
     handleVideoSuccess(res, file) {
       // 上传成功视频
       // this.videoDialog.ruleForm.video = URL.createObjectURL(file.raw);
-      console.log(res.data.file.path);
       this.videoDialog.ruleForm.video = res.data.file.path;
     },
     // 获取首页banner
     getBannerOrPt(type) {
-      var str = type
-        ? "bannerLoading"
-        : type == 2 ? "platformLoading" : "videoLoading";
+      var str =
+        type == 1
+          ? "bannerLoading"
+          : type == 2 ? "platformLoading" : "videoLoading";
       this[str] = true;
+
       this.$http({
         url: "/index/bannerOrpt",
         data: {
@@ -437,7 +436,6 @@ export default {
         res => {
           if (type == 1) {
             this.banner = res.data;
-            console.log(res.data);
           } else if (type == 2) {
             this.platform = res.data;
           } else if (type == 3) {

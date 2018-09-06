@@ -242,4 +242,9 @@ html,
     padding: 0;
   }
 }
+
+.note-popover,
+.tooltip {
+  z-index: 9999;
+}
 </style>
