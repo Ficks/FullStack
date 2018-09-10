@@ -20,6 +20,8 @@ var consultationRouter = require('./routes/consultation');
 var constructionCenterRouter = require('./routes/constructionCenter');
 // 关于我们
 var contactUsRouter = require('./routes/contactUs');
+// 底部
+var footerRouter = require('./routes/footer');
 
 
 
@@ -54,6 +56,7 @@ app.use('/news', newsRouter);
 app.use('/consultation', consultationRouter);
 app.use('/constructionCenter', constructionCenterRouter);
 app.use('/contactUs', contactUsRouter);
+app.use('/footer', footerRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

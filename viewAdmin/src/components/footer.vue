@@ -6,15 +6,15 @@
           element-loading-spinner="el-icon-loading"
           element-loading-background="rgba(0, 0, 0, 0.8)">
             <div slot="header" class="clearfix headers">
-            <span>Banner图</span>
+            <span>底部二维码</span>
             <el-button @click="onDialog" style="float: right; padding: 3px 0" type="text"><i class="el-icon-upload"></i>更换</el-button>
             </div>
-            <p class="tips">Banner图参考尺寸为（1920*540）px</p>
+            <p class="tips">二维码参考尺寸为（100*100）px</p>
 
             <div class="text item">
             <ul>
                 <li>
-                    <div class="box">
+                    <div class="box erweima">
                         <img :src="$server+bannerUrl" alt="">
                     </div>
                 </li>
@@ -24,14 +24,14 @@
 
 
 
-        <!-- 关于我们 -->
+        <!-- 底部列表 -->
         <el-card class="box-card engineering"
           v-loading="listLoading"
           element-loading-text="请稍后"
           element-loading-spinner="el-icon-loading"
           element-loading-background="rgba(0, 0, 0, 0.8)">
             <div slot="header" class="clearfix headers">
-            <span>关于我们</span>
+            <span>底部列表</span>
                 <el-button @click="onEngineeringDialog('添加列表')" style="float: right; padding: 3px 0" type="text"><i class="el-icon-circle-plus"></i>添加</el-button>
             </div>
             <el-card  v-for="(o,index) in engineeringData" class="text box-card item">
@@ -47,7 +47,7 @@
             </el-card>
         </el-card>
 
-        <!-- 轮播图 -->
+        <!-- 二维码 -->
       <el-dialog
           :title="appDialog.title"
           :lock-scroll="false"
@@ -62,7 +62,7 @@
                   <el-upload
                       class="avatar-uploader"
                       name="filename"
-                      :action="$server+'upload/contactUs/banner'"
+                      :action="$server+'upload/erweima'"
                       :show-file-list="false"
                       :on-success="handleAvatarSuccess"
                       :before-upload="beforeAvatarUpload">
@@ -78,7 +78,7 @@
       </el-dialog>
 
 
-      <!-- 关于我们 -->
+      <!-- 底部列表 -->
       <el-dialog
           :title="engineering.title"
           :visible.sync="engineering.show"
@@ -163,7 +163,7 @@ export default {
         if (valid) {
           this.appDialog.loading = true;
           this.$http({
-            url: "/contactUs/editBanner",
+            url: "/footer/editBanner",
             tips: true,
             data: { imageUrl: this.appDialog.ruleForm.imageUrl }
           }).then(
@@ -206,7 +206,6 @@ export default {
     onEngineeringDialog(title, row) {
       this.engineering.title = title;
       this.engineering.show = true;
-      this.engineering.ruleForm.isTop = false;
 
       this.$nextTick(() => {
         this.$refs.engineeringRuleForm.resetFields();
@@ -219,15 +218,16 @@ export default {
       // 获取编辑器内容
       this.$refs[formName].validate(valid => {
         if (valid) {
-          var url = "/contactUs/addList";
+          var url = "/footer/addList";
           var d = this.engineering.ruleForm;
           if (this.engineering.title.indexOf("修改") != -1) {
-            url = "/contactUs/editList";
+            url = "/footer/editList";
             d = JSON.stringify(d);
             d = JSON.parse(d);
             d.id = this.engineering.id;
           }
 
+          console.log(d);
           this.$http({
             url: url,
             tips: true,
@@ -250,7 +250,7 @@ export default {
     getBanner() {
       this.bannerLoading = true;
       this.$http({
-        url: "/contactUs/getList",
+        url: "/footer/getList",
         data: { type: 1 }
       }).then(
         res => {
@@ -265,7 +265,7 @@ export default {
     getList() {
       this.listLoading = true;
       this.$http({
-        url: "/contactUs/getList",
+        url: "/footer/getList",
         data: { type: 2, page: this.pageData }
       }).then(
         res => {
@@ -285,7 +285,7 @@ export default {
       })
         .then(() => {
           this.$http({
-            url: "/contactUs/deleteList",
+            url: "/footer/deleteList",
             data: { id: o._id }
           }).then(
             res => {
@@ -309,6 +309,9 @@ export default {
 </script>
 
 <style scoped lang="less">
+.erweima img {
+  width: 100px;
+}
 .banner {
   li {
     width: 100%;

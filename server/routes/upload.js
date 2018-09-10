@@ -67,6 +67,9 @@ uploadFile('constructionCenter/banner');
 // 关于我们
 uploadFile('contactUs/banner');
 
+// 底部二维码
+uploadFile('erweima');
+
 // 所有文章图片存储
 uploadFile('article');
 

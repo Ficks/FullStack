@@ -17,7 +17,6 @@ export default new Router({
       icon: "icon-wodedamaijihuo",
       component: resolve => require(['@/components/index.vue'], resolve)
     },
-
     {
       path: '/platform',
       name: '平台介绍',
@@ -59,6 +58,12 @@ export default new Router({
       name: '新闻中心',
       icon: "icon-xinwenzixun",
       component: resolve => require(['@/components/news.vue'], resolve)
-    }
+    },
+    {
+      path: '/footer',
+      name: 'Footer',
+      icon: "icon-xinwenzixun",
+      component: resolve => require(['@/components/footer.vue'], resolve)
+    },
   ]
 })

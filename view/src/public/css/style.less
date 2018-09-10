@@ -142,6 +142,9 @@ input {
                 text-align: center;
                 background: rgba(255, 255, 255, .4);
                 font-weight: 500;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
     }
@@ -171,6 +174,9 @@ input {
                 line-height: 45px;
                 text-align: center;
                 font-weight: 500;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
         }
     }
@@ -228,12 +234,13 @@ input {
         }
     }
     ul {
-        float: left;
-        &.last {
-            margin-left: 180px;
-        }
+        height: auto;
+        overflow: hidden;
+        width: 800px;
         li {
+            width: 50%;
             margin-bottom: 25px;
+            float: left;
         }
     }
 }
@@ -303,6 +310,11 @@ input {
                         font-size: 12px;
                         color: #666666;
                         text-indent: 2em;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
                     }
                 }
                 &:nth-child(odd) {
@@ -568,7 +580,7 @@ input {
 }
 
 .cots {
-    width: 800px;
+    width: 600px;
     margin: 0 auto;
     margin-top: 50px;
     .list {
@@ -751,4 +763,8 @@ input {
     img {
         display: none;
     }
+}
+
+#erweima {
+    width: 100px;
 }

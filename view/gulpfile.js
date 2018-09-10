@@ -8,9 +8,14 @@ const autoprefixer = require('gulp-autoprefixer');//自动解析css前缀
 const browserSync = require('browser-sync');//自动刷新
 const reload = browserSync.reload;//自动刷新
 var fileinclude = require('gulp-file-include'); //引入 header footer
+const htmlmin = require('gulp-htmlmin');
+
+// 获取 cleancss 模块（用于压缩 CSS）
+var cleanCSS = require('gulp-clean-css');
 
 //引入 header footer  参考：https://www.cnblogs.com/nzbin/p/7467546.html
 gulp.task('fileinclude', function () {
+
     gulp.src(['src/**/*.html', '!src/include/**.html'])//主文件
         .pipe(fileinclude({
             prefix: '@@',
@@ -24,18 +29,32 @@ gulp.task('fileinclude', function () {
 
 // 解析html
 gulp.task('html', function () {
+
+    var options = {
+        removeComments: true,//清除HTML注释
+        collapseWhitespace: true,//压缩HTML
+        collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input />
+        removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
+        removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
+        removeStyleLinkTypeAttributes: true,//删除<style>和<link>的type="text/css"
+        minifyJS: true,//压缩页面JS
+        minifyCSS: true//压缩页面CSS
+    };
+
     gulp.src('src/**/*.html')
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file'
         }))
         .pipe(html())
+        .pipe(htmlmin(options))
         .pipe(gulp.dest('dist/'));
 })
 // 解析less
 gulp.task('less', function () {
     gulp.src('src/public/css/*.less')
         .pipe(less())
+        .pipe(cleanCSS())
         .pipe(gulp.dest('dist/public/css'));
 })
 // 解析js
@@ -44,7 +63,7 @@ gulp.task('js', function () {
         .pipe(babel({
             presets: ['es2015']
         }))
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('dist/public/scripts'));
 })
 // 压缩图片

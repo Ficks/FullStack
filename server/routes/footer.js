@@ -5,25 +5,25 @@ var router = express.Router();
 var mongodb = require("mongodb");
 var mongoose = require("mongoose");
 
-var contactUs = new mongoose.Schema({
-    type: Number,//类型  1：banner  2：列表
+var footer = new mongoose.Schema({
+    type: Number,//类型  1：二维码  2：列表
     url: String,//图片地址
     str: String
 })
 
-var contactUsModel = mongoose.model('contactUs', contactUs);
+var footerModel = mongoose.model('footer', footer);
 
 // 获取列表
 router.post('/getList', (req, res, next) => {
     //    不需要分页
-    contactUsModel.find({ type: req.body.type }, (err, doc) => {
+    footerModel.find({ type: req.body.type }, (err, doc) => {
         res.send({ code: 200, data: doc })
     })
 })
 
 // 更换banner
 router.post('/editBanner', (req, res, next) => {
-    contactUsModel.update({
+    footerModel.update({
         type: 1
     }, {
             type: 1,
@@ -41,7 +41,7 @@ router.post("/addList", (req, res, next) => {
         type: 2,//类型  1：banner  2：缩略图
         str: req.body.title
     }
-    contactUsModel.create(d, (err, doc) => {
+    footerModel.create(d, (err, doc) => {
         if (err) throw err;
         res.send({ code: 200, msg: "添加成功" })
     })
@@ -49,7 +49,7 @@ router.post("/addList", (req, res, next) => {
 
 // 修改列表
 router.post("/editList", (req, res, next) => {
-    contactUsModel.findByIdAndUpdate(req.body.id, {
+    footerModel.findByIdAndUpdate(req.body.id, {
         str: req.body.title
     }, (err, doc) => {
         res.send({ code: 200, msg: "修改成功" })
@@ -57,7 +57,7 @@ router.post("/editList", (req, res, next) => {
 })
 
 router.post("/deleteList", (req, res, next) => {
-    contactUsModel.findByIdAndRemove(req.body.id, (err, doc) => {
+    footerModel.findByIdAndRemove(req.body.id, (err, doc) => {
         res.send({ code: 200, msg: "删除成功" })
     })
 })

@@ -1,4 +1,5 @@
 var $main = {
+    // server: "http://127.0.0.1:3030",
     server: "http://39.108.181.216",
     isPage: true,
     childIndex: 2,
@@ -84,7 +85,6 @@ var $main = {
                 type: 2
             },
             success: function (data) {
-                console.log(data);
 
                 var str = ""
                 for (var i = 0; i < data.data.length; i++) {
@@ -410,52 +410,89 @@ var $main = {
         })
 
 
-        $.getJSON('/public/scripts/city.json', function (data) {
+        $.getJSON('/public/scripts/city2.json', function (data) {
             $main.city = data;
-            $("#shen").html('<option value=""></option>');
-            for (var i = 0; i < data.length; i++) {
-                var s = data[i];
-                $("#shen").append('<option value="' + s.label + '">' + s.label + '</option>')
+            for (var i in data) {
+                $("#shen").html('<option value=""></option>');
+                for (var i in data) {
+                    $("#shen").append('<option value="' + i + '">' + i + '</option>')
+                }
             }
         })
+
 
         $("#shen").on("change", function () {
             var v = $(this).val()
             $("#shi").html('<option value=""></option>');
             $("#qu").html('<option value=""></option>');
-            for (let i = 0; i < $main.city.length; i++) {
-                var s = $main.city[i];
-                if (s.label == v) {
-                    for (var j = 0; j < s.cities.length; j++) {
-                        var ss = s.cities[j];
-                        $("#shi").append('<option value="' + ss.label + '">' + ss.label + '</option>')
-                    }
-                    break;
-                }
+
+            for (var i in $main.city[v]) {
+                $("#shi").append('<option value="' + i + '">' + i + '</option>')
             }
         })
 
+
         $("#shi").on("change", function () {
             var v = $("#shen").val()
-            var vv = $(this).val()
-            $("#qu").html('<option value=""></option>');
-            for (let i = 0; i < $main.city.length; i++) {
-                var s = $main.city[i];
-                if (s.label == v) {
-                    for (var j = 0; j < s.cities.length; j++) {
-                        var ss = s.cities[j];
-                        if (ss.label == vv) {
-                            for (let p = 0; p < ss.cities.length; p++) {
-                                var q = ss.cities[p];
-                                $("#qu").append('<option value="' + q.label + '">' + q.label + '</option>')
-                            }
-                            break;
-                        }
-                    }
-                    break;
-                }
+            var s = $("#shi").val()
+            var m = 0;
+            for (var i in $main.city[v][s]) {
+                m++;
+                $("#qu").append('<option value="' + $main.city[v][s][i] + '">' + $main.city[v][s][i] + '</option>')
+            }
+            if (m == 0) {
+                $("#qu").hide();
+            } else {
+                $("#qu").show();
             }
         })
+
+        // $.getJSON('/public/scripts/city.json', function (data) {
+        //     $main.city = data;
+        //     $("#shen").html('<option value=""></option>');
+        //     for (var i = 0; i < data.length; i++) {
+        //         var s = data[i];
+        //         $("#shen").append('<option value="' + s.label + '">' + s.label + '</option>')
+        //     }
+        // })
+
+        // $("#shen").on("change", function () {
+        //     var v = $(this).val()
+        //     $("#shi").html('<option value=""></option>');
+        //     $("#qu").html('<option value=""></option>');
+        //     for (let i = 0; i < $main.city.length; i++) {
+        //         var s = $main.city[i];
+        //         if (s.label == v) {
+        //             for (var j = 0; j < s.cities.length; j++) {
+        //                 var ss = s.cities[j];
+        //                 $("#shi").append('<option value="' + ss.label + '">' + ss.label + '</option>')
+        //             }
+        //             break;
+        //         }
+        //     }
+        // })
+
+        // $("#shi").on("change", function () {
+        //     var v = $("#shen").val()
+        //     var vv = $(this).val()
+        //     $("#qu").html('<option value=""></option>');
+        //     for (let i = 0; i < $main.city.length; i++) {
+        //         var s = $main.city[i];
+        //         if (s.label == v) {
+        //             for (var j = 0; j < s.cities.length; j++) {
+        //                 var ss = s.cities[j];
+        //                 if (ss.label == vv) {
+        //                     for (let p = 0; p < ss.cities.length; p++) {
+        //                         var q = ss.cities[p];
+        //                         $("#qu").append('<option value="' + q.label + '">' + q.label + '</option>')
+        //                     }
+        //                     break;
+        //                 }
+        //             }
+        //             break;
+        //         }
+        //     }
+        // })
 
 
         // location: String,//地区
@@ -756,5 +793,42 @@ var $main = {
                 console.log(err);
             }
         })
+    },
+    footer: function () {
+        $.ajax({
+            url: $main.server + "/footer/getList",
+            type: "post",
+            data: {
+                type: 2
+            },
+            success: function (data) {
+                var str = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    str += '<li>' + data.data[i].str + '</li>'
+                }
+
+                $("#footers").append(str);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+
+        $.ajax({
+            url: $main.server + "/footer/getList",
+            type: "post",
+            data: {
+                type: 1
+            },
+            success: function (data) {
+                $("#erweima").attr("src", $main.server + '/' + data.data[0].url)
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+
     }
 }
+
+$main.footer();
